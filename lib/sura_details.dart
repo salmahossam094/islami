@@ -39,17 +39,30 @@ class SuraDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(args.suraName,
-                              style: Theme.of(context).textTheme.bodySmall),
-                          const SizedBox(
-                            width: 2,
-                          ),
-                          IconButton(
-                              onPressed: () {}, icon: const Icon(Icons.play_circle)),
-                        ],
+                      Container(
+                        margin: const EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                        ),
+                        decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                            width: 0.5,
+                          )),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(args.suraName,
+                                style: Theme.of(context).textTheme.bodySmall),
+                            const SizedBox(
+                              width: 2,
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.play_circle)),
+                          ],
+                        ),
                       )
                     ],
                   ),
