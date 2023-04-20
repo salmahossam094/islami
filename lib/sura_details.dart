@@ -67,10 +67,10 @@ class _SuraDetailsState extends State<SuraDetails> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(args.suraName,
-                                style: Theme.of(context).textTheme.bodySmall),
+                            Text("${args.suraName}  رقم السورة  ${args.index+1}",
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20)),
                             const SizedBox(
-                              width: 2,
+                              width: 1,
                             ),
                             IconButton(
                                 onPressed: () {},
@@ -85,7 +85,7 @@ class _SuraDetailsState extends State<SuraDetails> {
                                 color: Theme.of(context).primaryColor,
                               ))
                             : ListView.builder(
-                                padding: EdgeInsets.only(right: 10, top: 10),
+                                padding: const EdgeInsets.only(right: 10, top: 10),
                                 itemBuilder: (context, index) {
                                   return Row(
                                     children: [
