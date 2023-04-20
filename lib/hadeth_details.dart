@@ -106,7 +106,7 @@ class _HadethDetailsState extends State<HadethDetails> {
         await rootBundle.loadString('assets/hadeth/h${index + 1}.txt');
     List<String> lines = hadeth.split('\n');
     verses = lines;
-    print(lines);
+
     setState(() {});
   }
 }
