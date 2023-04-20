@@ -15,14 +15,14 @@ class _SebhaTabState extends State<SebhaTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Spacer(flex: 3,),
           Image.asset(
             'assets/images/sebha_pho.png',
             scale: 1.2,
           ),
-          SizedBox(
-            height: 3,
-          ),
+          Spacer(flex: 2,),
           Text('عدد التسبيحات', style: Theme.of(context).textTheme.bodySmall),
+          Spacer(flex: 3,),
           ElevatedButton(
             onPressed: () {
               checkState();
@@ -52,6 +52,7 @@ class _SebhaTabState extends State<SebhaTab> {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
+          Spacer(flex: 2,)
         ],
       ),
     );

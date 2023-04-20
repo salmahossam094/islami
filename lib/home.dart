@@ -69,7 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   AssetImage('assets/images/ahadeth.png'),
                   size: 28,
                 ),
-
               ),
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,

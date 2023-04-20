@@ -3,8 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyThemeData {
   static Color lightColor = const Color(0xFFB7935F);
+  static Color darkColorIcon = const Color(0xFFFACC1D);
+  static Color darkColor = const Color(0xFF141A2E);
+
   static ThemeData lightTheme = ThemeData(
       primaryColor: lightColor,
+      brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.transparent,
       textTheme: TextTheme(
         bodyLarge: GoogleFonts.elMessiri(
@@ -25,11 +29,10 @@ class MyThemeData {
         ),
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black )
-      ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          centerTitle: true,
+          iconTheme: IconThemeData(color: Colors.black)),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: lightColor,
         selectedItemColor: Colors.black,
@@ -38,5 +41,19 @@ class MyThemeData {
         unselectedLabelStyle:
             const TextStyle(color: Colors.white, fontSize: 12),
       ));
-  static ThemeData darkTheme = ThemeData();
+  static ThemeData darkTheme = ThemeData(
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: Colors.transparent,
+      appBarTheme: AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          centerTitle: true,
+          iconTheme: IconThemeData(color: Colors.white)),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: darkColor,
+        selectedItemColor: darkColorIcon,
+        selectedLabelStyle:
+            const TextStyle(color: Color(0xFFFACC1D), fontSize: 12),
+        unselectedItemColor: Colors.white,
+      ));
 }
