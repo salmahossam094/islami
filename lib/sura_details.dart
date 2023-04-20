@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/sura_details_model.dart';
 
-class SuraDetails extends StatelessWidget {
+class SuraDetails extends StatefulWidget {
   static const String routeName = 'sura-details';
+
+  @override
+  State<SuraDetails> createState() => _SuraDetailsState();
+}
+
+class _SuraDetailsState extends State<SuraDetails> {
+  List<String> verses = [];
 
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs;
+
+    if (verses.isEmpty) {
+      loadFile(args.index);
+    }
+
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -63,6 +77,32 @@ class SuraDetails extends StatelessWidget {
                                 icon: const Icon(Icons.play_circle)),
                           ],
                         ),
+                      ),
+                      Expanded(
+                        child: verses.isEmpty
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                color: Theme.of(context).primaryColor,
+                              ))
+                            : ListView.builder(
+                                padding: EdgeInsets.only(right: 10, top: 10),
+                                itemBuilder: (context, index) {
+                                  return Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          '(${index + 1}) ${verses[index]}',
+                                          style: GoogleFonts.amiri(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w500),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                                itemCount: verses.length,
+                              ),
                       )
                     ],
                   ),
@@ -73,5 +113,13 @@ class SuraDetails extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> loadFile(int index) async {
+    String sura = await rootBundle.loadString("assets/files/${index + 1}.txt");
+    List<String> lines = sura.split('\n');
+    verses = lines;
+
+    setState(() {});
   }
 }
