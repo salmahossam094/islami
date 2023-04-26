@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:islami/my_theme.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({Key? key}) : super(key: key);
@@ -30,29 +31,39 @@ class RadioTab extends StatelessWidget {
                   onPressed: () {},
                   icon: Icon(
                     FontAwesomeIcons.backwardStep,
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Theme.of(context).primaryColor
+                        : MyThemeData.darkColorIcon,
                     size: 30,
                   ),
                 )),
-            const SizedBox(width: 28,),
+            const SizedBox(
+              width: 28,
+            ),
             IconButton(
                 onPressed: () {},
                 icon: IconButton(
                   onPressed: () {},
                   icon: Icon(
                     FontAwesomeIcons.play,
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Theme.of(context).primaryColor
+                        : MyThemeData.darkColorIcon,
                     size: 30,
                   ),
                 )),
-            const SizedBox(width: 28,),
+            const SizedBox(
+              width: 28,
+            ),
             IconButton(
                 onPressed: () {},
                 icon: IconButton(
                   onPressed: () {},
                   icon: Icon(
                     FontAwesomeIcons.forwardStep,
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Theme.of(context).primaryColor
+                        : MyThemeData.darkColorIcon,
                     size: 30,
                   ),
                 ))

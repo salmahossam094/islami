@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/sura_details_model.dart';
 
+import 'my_theme.dart';
+
 class SuraDetails extends StatefulWidget {
   static const String routeName = 'sura-details';
 
@@ -23,9 +25,11 @@ class _SuraDetailsState extends State<SuraDetails> {
 
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/background.png'),
+              image: Theme.of(context).brightness == Brightness.light
+                  ? AssetImage('assets/images/background.png')
+                  : AssetImage('assets/images/bg_dark.png'),
               fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
@@ -35,80 +39,113 @@ class _SuraDetailsState extends State<SuraDetails> {
           ),
         ),
         body: SizedBox(
+          height: MediaQuery.of(context).size.height-100,
           width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Container(
-                  width: 300,
-                  height: 450,
-                  alignment: Alignment.bottomCenter,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 15),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          left: 25,
-                          right: 25,
-                        ),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                            width: 0.5,
-                          )),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("${args.suraName}  رقم السورة  ${args.index+1}",
-                                style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20)),
-                            const SizedBox(
-                              width: 1,
-                            ),
-                            IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.play_circle)),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: verses.isEmpty
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                color: Theme.of(context).primaryColor,
-                              ))
-                            : ListView.builder(
-                                padding: const EdgeInsets.only(right: 10, top: 10),
-                                itemBuilder: (context, index) {
-                                  return Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          '(${index + 1}) ${verses[index]}',
-                                          style: GoogleFonts.amiri(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w500),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                },
-                                itemCount: verses.length,
-                              ),
-                      )
-                    ],
-                  ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 40,
                 ),
-              )
-            ],
+                Center(
+                  child: Container(
+                   // width: 300,
+                    width: MediaQuery.of(context).size.width-40,
+                    height: MediaQuery.of(context).size.height-80,
+                    // height: double.infinity,
+                    alignment: Alignment.bottomCenter,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Color.fromRGBO(255, 255, 255, 50)
+                          : MyThemeData.darkColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 15),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            left: 25,
+                            right: 25,
+                          ),
+                          decoration:  BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                              width: 0.5,
+                                  color:Theme.of(context).brightness ==
+                                      Brightness.light
+                                      ? Theme.of(context).primaryColor
+                                      : MyThemeData.darkColorIcon
+                            )),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                  "${args.suraName}  رقم السورة  ${args.index + 1}",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                          fontSize: 20,
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.light
+                                              ? Colors.black
+                                              : MyThemeData.darkColorIcon)),
+                              const SizedBox(
+                                width: 1,
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.play_circle),
+                                color: Theme.of(context).brightness ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : MyThemeData.darkColorIcon,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: verses.isEmpty
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                  color: Theme.of(context).primaryColor,
+                                ))
+                              : ListView.builder(
+                                  padding:
+                                      const EdgeInsets.only(right: 10, top: 10),
+                                  itemBuilder: (context, index) {
+                                    return Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            '(${index + 1}) ${verses[index]}',
+                                            style: GoogleFonts.amiri(
+                                                color: Theme.of(context)
+                                                            .brightness ==
+                                                        Brightness.light
+                                                    ? Colors.black
+                                                    : MyThemeData.darkColorIcon,
+                                                fontWeight: FontWeight.w500),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                  itemCount: verses.length,
+                                ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
