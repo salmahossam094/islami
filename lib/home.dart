@@ -21,17 +21,26 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
+       if (Theme.of(context).brightness==Brightness.light) ...[
         SizedBox(
             width: double.infinity,
             child: Image.asset(
               'assets/images/background.png',
               fit: BoxFit.fill,
-            )),
+            )),] else ...[
+         SizedBox(
+             width: double.infinity,
+             child: Image.asset(
+               'assets/images/bg_dark.png',
+               fit: BoxFit.fill,
+             ))
+       ]
+        ,
         Scaffold(
           appBar: AppBar(
             title: Text(

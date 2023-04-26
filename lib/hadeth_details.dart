@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'my_theme.dart';
+
 class HadethDetails extends StatefulWidget {
   static const String routeName = 'hadeth';
 
@@ -21,9 +23,11 @@ class _HadethDetailsState extends State<HadethDetails> {
     }
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/background.png'),
+              image: Theme.of(context).brightness == Brightness.light
+                  ? AssetImage('assets/images/background.png')
+                  : AssetImage('assets/images/bg_dark.png'),
               fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
@@ -44,7 +48,9 @@ class _HadethDetailsState extends State<HadethDetails> {
                   height: 450,
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Color.fromRGBO(255, 255, 255, 1)
+                        : MyThemeData.darkColor,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -56,10 +62,14 @@ class _HadethDetailsState extends State<HadethDetails> {
                           left: 25,
                           right: 25,
                         ),
-                        decoration: const BoxDecoration(
+                        decoration:  BoxDecoration(
                           border: Border(
                               bottom: BorderSide(
                             width: 0.5,
+                                  color:Theme.of(context).brightness ==
+                                      Brightness.light
+                                      ? Theme.of(context).primaryColor
+                                      : MyThemeData.darkColorIcon
                           )),
                         ),
                         child: Row(
@@ -69,7 +79,12 @@ class _HadethDetailsState extends State<HadethDetails> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall
-                                    ?.copyWith(fontWeight: FontWeight.w600)),
+                                    ?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.light
+                                            ? Colors.black
+                                            : MyThemeData.darkColorIcon)),
                             const SizedBox(
                               width: 2,
                             ),
@@ -82,7 +97,11 @@ class _HadethDetailsState extends State<HadethDetails> {
                             return Text(
                               verses[index],
                               style: GoogleFonts.amiri(
-                                  color: Colors.black,
+                                  color: Theme.of(context)
+                                      .brightness ==
+                                      Brightness.light
+                                      ? Colors.black
+                                      : MyThemeData.darkColorIcon,
                                   fontWeight: FontWeight.w500),
                               textAlign: TextAlign.center,
                             );
@@ -106,7 +125,7 @@ class _HadethDetailsState extends State<HadethDetails> {
         await rootBundle.loadString('assets/hadeth/h${index + 1}.txt');
     List<String> lines = hadeth.split('\n');
     verses = lines;
-    print(lines);
+
     setState(() {});
   }
 }

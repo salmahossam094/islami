@@ -42,6 +42,7 @@ class MyThemeData {
             const TextStyle(color: Colors.white, fontSize: 12),
       ));
   static ThemeData darkTheme = ThemeData(
+    primaryColor: darkColor,
       brightness: Brightness.dark,
       scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: AppBarTheme(
@@ -55,5 +56,22 @@ class MyThemeData {
         selectedLabelStyle:
             const TextStyle(color: Color(0xFFFACC1D), fontSize: 12),
         unselectedItemColor: Colors.white,
+      ),
+      textTheme: TextTheme(
+        bodyLarge: GoogleFonts.elMessiri(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+        ),
+        bodyMedium: GoogleFonts.jomhuria(
+          color: Colors.white,
+          fontWeight: FontWeight.w900,
+          fontSize: 25,
+        ),
+        bodySmall: GoogleFonts.elMessiri(
+          color: Colors.white,
+          fontWeight: FontWeight.normal,
+          fontSize: 25,
+        ),
       ));
 }

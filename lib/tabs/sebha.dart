@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../my_theme.dart';
+
 class SebhaTab extends StatefulWidget {
   @override
   State<SebhaTab> createState() => _SebhaTabState();
@@ -15,21 +17,30 @@ class _SebhaTabState extends State<SebhaTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Spacer(flex: 3,),
+          Spacer(
+            flex: 3,
+          ),
           Image.asset(
-            'assets/images/sebha_pho.png',
+            Theme.of(context).brightness == Brightness.light
+                ? 'assets/images/sebha_pho.png'
+                : 'assets/images/sebha_dark.png',
             scale: 1.2,
           ),
-          Spacer(flex: 2,),
+          Spacer(
+            flex: 2,
+          ),
           Text('عدد التسبيحات', style: Theme.of(context).textTheme.bodySmall),
-          Spacer(flex: 3,),
+          Spacer(
+            flex: 3,
+          ),
           ElevatedButton(
             onPressed: () {
               checkState();
               setState(() {});
             },
             style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Color(0xFFD5AF7E)),
+                backgroundColor:
+                    MaterialStatePropertyAll(Theme.of(context).primaryColor),
                 fixedSize: MaterialStatePropertyAll(Size(69, 81)),
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)))),
@@ -43,7 +54,9 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Theme.of(context).primaryColor
+                    : MyThemeData.darkColorIcon,
                 borderRadius: BorderRadius.circular(20)),
             margin: EdgeInsets.all(12),
             padding: const EdgeInsets.all(8.0),
@@ -52,7 +65,9 @@ class _SebhaTabState extends State<SebhaTab> {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
-          Spacer(flex: 2,)
+          Spacer(
+            flex: 2,
+          )
         ],
       ),
     );

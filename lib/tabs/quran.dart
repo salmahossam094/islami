@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:islami/sura_details.dart';
 import 'package:islami/sura_details_model.dart';
 
+import '../my_theme.dart';
+
 class QuranTab extends StatefulWidget {
   @override
   State<QuranTab> createState() => _QuranTabState();
@@ -253,14 +255,30 @@ class _QuranTabState extends State<QuranTab> {
             Image.asset('assets/images/quran_bg.png'),
             DataTable(
               border: TableBorder(
-                horizontalInside:
-                    BorderSide(width: 1, color: Theme.of(context).primaryColor),
-                verticalInside:
-                    BorderSide(width: 3, color: Theme.of(context).primaryColor),
-                top:
-                    BorderSide(width: 3, color: Theme.of(context).primaryColor),
-                bottom:
-                    BorderSide(width: 3, color: Theme.of(context).primaryColor),
+                horizontalInside: BorderSide(
+                  width: 1,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : MyThemeData.darkColorIcon,
+                ),
+                verticalInside: BorderSide(
+                  width: 3,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : MyThemeData.darkColorIcon,
+                ),
+                top: BorderSide(
+                  width: 3,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : MyThemeData.darkColorIcon,
+                ),
+                bottom: BorderSide(
+                  width: 3,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Theme.of(context).primaryColor
+                      : MyThemeData.darkColorIcon,
+                ),
               ),
               columns: [
                 DataColumn(
