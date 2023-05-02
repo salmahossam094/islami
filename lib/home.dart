@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/tabs/ahadeth.dart';
 import 'package:islami/tabs/radio.dart';
 import 'package:islami/tabs/sebha.dart';
+import 'package:islami/tabs/settings.dart';
 
 import 'tabs/quran.dart';
 
@@ -10,6 +11,7 @@ List<Widget> tabs = [
   SebhaTab(),
   AhadethTab(),
   QuranTab(),
+  SettingsTab(),
 ];
 
 int index = 0;
@@ -85,7 +87,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                   icon: const ImageIcon(
                     AssetImage('assets/images/quran.png'),
                     size: 28,
-                  ))
+                  )),
+              BottomNavigationBarItem(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  label: 'الإعدادات',
+                  icon: const Icon(
+                    Icons.settings,
+                    size: 28,
+                  )),
             ],
           ),
         ),
