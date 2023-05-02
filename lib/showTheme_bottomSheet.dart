@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:islami/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class ShowThemeBottomSheet extends StatelessWidget {
   const ShowThemeBottomSheet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Container(
         height: MediaQuery.of(context).size.height * .5,
         child: Column(
@@ -12,7 +15,9 @@ class ShowThemeBottomSheet extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  pro.changeTheme(ThemeMode.light);
+                },
                 child: Row(
                   children: [
                     Text(
@@ -35,7 +40,9 @@ class ShowThemeBottomSheet extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  pro.changeTheme(ThemeMode.dark);
+                },
                 child: Row(
                   children: [
                     Text(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islami/providers/my_provider.dart';
 import 'package:islami/showTheme_bottomSheet.dart';
+import 'package:provider/provider.dart';
 
 class SettingsTab extends StatefulWidget {
   static const String routeName = 'settings';
@@ -11,19 +13,22 @@ class SettingsTab extends StatefulWidget {
 class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
+    var prov = Provider.of<MyProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Text(
             'Themeing',
             style:
                 Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20),
           ),
           InkWell(
-            onTap:(){
+            onTap: () {
               showThemeSheet();
             },
             child: Container(
@@ -33,7 +38,10 @@ class _SettingsTabState extends State<SettingsTab> {
                   borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Light',
+                child: Text(
+                    Theme.of(context).brightness == Brightness.light
+                        ? 'Light'
+                        : 'Dark',
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
