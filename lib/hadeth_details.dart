@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/hadeth_model.dart';
 
 import 'my_theme.dart';
 
@@ -12,15 +13,10 @@ class HadethDetails extends StatefulWidget {
 }
 
 class _HadethDetailsState extends State<HadethDetails> {
-  List<String> verses = [];
-
   @override
   Widget build(BuildContext context) {
-    var index = ModalRoute.of(context)?.settings.arguments as int;
+    var args = ModalRoute.of(context)?.settings.arguments as HadethModel;
 
-    if (verses.isEmpty) {
-      loadHadeth(index);
-    }
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -53,63 +49,56 @@ class _HadethDetailsState extends State<HadethDetails> {
                         : MyThemeData.darkColor,
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 15),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          left: 25,
-                          right: 25,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 15),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            left: 25,
+                            right: 25,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 0.5,
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? Theme.of(context).primaryColor
+                                        : MyThemeData.darkColorIcon)),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(args.title,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.light
+                                              ? Colors.black
+                                              : MyThemeData.darkColorIcon)),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                            ],
+                          ),
                         ),
-                        decoration:  BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                            width: 0.5,
-                                  color:Theme.of(context).brightness ==
-                                      Brightness.light
-                                      ? Theme.of(context).primaryColor
-                                      : MyThemeData.darkColorIcon
-                          )),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("حديث ${index + 1}",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: Theme.of(context).brightness ==
-                                                Brightness.light
-                                            ? Colors.black
-                                            : MyThemeData.darkColorIcon)),
-                            const SizedBox(
-                              width: 2,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemBuilder: (context, index) {
-                            return Text(
-                              verses[index],
-                              style: GoogleFonts.amiri(
-                                  color: Theme.of(context)
-                                      .brightness ==
-                                      Brightness.light
+                        Text(
+                          args.content,
+                          style: GoogleFonts.amiri(
+                              color:
+                                  Theme.of(context).brightness == Brightness.light
                                       ? Colors.black
                                       : MyThemeData.darkColorIcon,
-                                  fontWeight: FontWeight.w500),
-                              textAlign: TextAlign.center,
-                            );
-                          },
-                          itemCount: verses.length,
-                        ),
-                      )
-                    ],
+                              fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )
@@ -118,14 +107,5 @@ class _HadethDetailsState extends State<HadethDetails> {
         ),
       ),
     );
-  }
-
-  Future<void> loadHadeth(int index) async {
-    String hadeth =
-        await rootBundle.loadString('assets/hadeth/h${index + 1}.txt');
-    List<String> lines = hadeth.split('\n');
-    verses = lines;
-
-    setState(() {});
   }
 }
