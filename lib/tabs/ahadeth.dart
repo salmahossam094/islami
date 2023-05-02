@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/hadeth_details.dart';
 
-import '../hadeth_model.dart';
+import '../models/hadeth_model.dart';
 import '../my_theme.dart';
 
 class AhadethTab extends StatefulWidget {
