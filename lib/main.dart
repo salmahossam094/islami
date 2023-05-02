@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (context) => HomeScreen(),
         SuraDetails.routeName:(context) => SuraDetails(),
         HadethDetails.routeName:(context) => HadethDetails()
+
       },
     );
   }
