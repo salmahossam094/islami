@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami/providers/my_provider.dart';
+import 'package:islami/showLanguage_bottomSheet.dart';
 import 'package:islami/showTheme_bottomSheet.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsTab extends StatefulWidget {
   static const String routeName = 'settings';
@@ -23,7 +25,7 @@ class _SettingsTabState extends State<SettingsTab> {
             height: 20,
           ),
           Text(
-            'Themeing',
+            AppLocalizations.of(context)!.themeing,
             style:
                 Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20),
           ),
@@ -34,14 +36,17 @@ class _SettingsTabState extends State<SettingsTab> {
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                  border: Border.all(color: Theme.of(context).primaryColor),
+                  border: Border.all(
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Theme.of(context).primaryColor
+                          : Colors.white),
                   borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                     Theme.of(context).brightness == Brightness.light
-                        ? 'Light'
-                        : 'Dark',
+                        ? AppLocalizations.of(context)!.light
+                        : AppLocalizations.of(context)!.dark,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
@@ -53,82 +58,28 @@ class _SettingsTabState extends State<SettingsTab> {
             height: 20,
           ),
           Text(
-            'Language',
+            AppLocalizations.of(context)!.language,
             style:
                 Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20),
           ),
           InkWell(
             onTap: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'English',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 35),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.done,
-                              color: Theme.of(context).primaryColor,
-                              size: 25,
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Arabic',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.light
-                                          ? Colors.black45
-                                          : Colors.white,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 35),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.done,
-                              color: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? Colors.black45
-                                  : Colors.white,
-                              size: 25,
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              );
+              showLanguageSheet();
             },
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                  border: Border.all(color: Theme.of(context).primaryColor),
+                  border: Border.all(
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Theme.of(context).primaryColor
+                          : Colors.white),
                   borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('English',
+                child: Text(
+                    prov.Language == 'ar'
+                        ? AppLocalizations.of(context)!.arabic
+                        : AppLocalizations.of(context)!.english,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
@@ -141,8 +92,18 @@ class _SettingsTabState extends State<SettingsTab> {
     );
   }
 
+  showLanguageSheet() {
+    showModalBottomSheet(
+        backgroundColor: Theme.of(context).brightness==Brightness.light?Colors.white:Colors.white,
+        context: context,
+        builder: (context) {
+          return ShowLanguageBottomSheet();
+        });
+  }
+
   showThemeSheet() {
     showModalBottomSheet(
+
         context: context,
         builder: (context) {
           return ShowThemeBottomSheet();

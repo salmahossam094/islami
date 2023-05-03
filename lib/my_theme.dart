@@ -36,10 +36,10 @@ class MyThemeData {
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: lightColor,
         selectedItemColor: Colors.black,
-        selectedLabelStyle: const TextStyle(color: Colors.black, fontSize: 12),
+        selectedLabelStyle:  GoogleFonts.elMessiri(color: Colors.black, fontSize: 18,fontWeight: FontWeight.w600),
         unselectedItemColor: Colors.white,
         unselectedLabelStyle:
-            const TextStyle(color: Colors.white, fontSize: 12),
+            GoogleFonts.elMessiri(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w600),
       ));
   static ThemeData darkTheme = ThemeData(
     primaryColor: darkColor,
@@ -54,8 +54,9 @@ class MyThemeData {
         backgroundColor: darkColor,
         selectedItemColor: darkColorIcon,
         selectedLabelStyle:
-            const TextStyle(color: Color(0xFFFACC1D), fontSize: 12),
+            const TextStyle(color: Color(0xFFFACC1D), fontSize: 18,fontWeight: FontWeight.w600),
         unselectedItemColor: Colors.white,
+        unselectedLabelStyle: const TextStyle( fontSize: 18,fontWeight: FontWeight.w600),
       ),
       textTheme: TextTheme(
         bodyLarge: GoogleFonts.elMessiri(
