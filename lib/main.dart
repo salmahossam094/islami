@@ -9,8 +9,12 @@ import 'home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
-  return runApp(ChangeNotifierProvider(
-      create: (context) => MyProvider(), child: MyApp()));
+  return runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => MyProvider(),
+    ),
+    // ChangeNotifierProvider(create: (context) => SuraDetailsProvider(),),
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
