@@ -22,17 +22,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
     return MaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('en'), // English
         Locale('ar'),
       ],
-     locale: Locale(provider.Language),
+     locale: Locale(provider.language),
       themeMode: provider.themeMode,
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,

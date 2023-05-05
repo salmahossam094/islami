@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class MyProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
-  String Language = 'en';
+  String language = 'en';
 
   changeTheme(ThemeMode mode) {
     themeMode = mode;
     notifyListeners();
   }
 
-  chageLanguage(String lang) {
-    Language = lang;
+  changeLanguage(String lang) {
+    language = lang;
     notifyListeners();
   }
 }

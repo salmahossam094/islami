@@ -45,7 +45,7 @@ class MyThemeData {
     primaryColor: darkColor,
       brightness: Brightness.dark,
       scaffoldBackgroundColor: Colors.transparent,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           centerTitle: true,

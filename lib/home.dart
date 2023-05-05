@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'tabs/quran.dart';
 
 List<Widget> tabs = [
-  RadioTab(),
+  const RadioTab(),
   SebhaTab(),
   AhadethTab(),
   QuranTab(),

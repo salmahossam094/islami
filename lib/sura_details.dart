@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/models/sura_details_model.dart';
 import 'package:islami/providers/sura_provider.dart';
@@ -23,8 +22,8 @@ class SuraDetails extends StatelessWidget {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: Theme.of(context).brightness == Brightness.light
-                      ? AssetImage('assets/images/background.png')
-                      : AssetImage('assets/images/bg_dark.png'),
+                      ? const AssetImage('assets/images/background.png')
+                      : const AssetImage('assets/images/bg_dark.png'),
                   fit: BoxFit.fill)),
           child: Scaffold(
             appBar: AppBar(
@@ -41,7 +40,7 @@ class SuraDetails extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Center(
@@ -54,7 +53,7 @@ class SuraDetails extends StatelessWidget {
                         decoration: BoxDecoration(
                           color:
                               Theme.of(context).brightness == Brightness.light
-                                  ? Color.fromRGBO(255, 255, 255, 50)
+                                  ? const Color.fromRGBO(255, 255, 255, 50)
                                   : MyThemeData.darkColor,
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -96,7 +95,7 @@ class SuraDetails extends StatelessWidget {
                                   ),
                                   IconButton(
                                     onPressed: () {},
-                                    icon: Icon(Icons.play_circle),
+                                    icon: const Icon(Icons.play_circle),
                                     color: Theme.of(context).brightness ==
                                             Brightness.light
                                         ? Colors.black

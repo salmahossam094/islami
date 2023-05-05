@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/providers/my_provider.dart';
-import 'package:islami/showLanguage_bottomSheet.dart';
-import 'package:islami/showTheme_bottomSheet.dart';
+import 'package:islami/show_language_bottom_sheet.dart';
+import 'package:islami/show_theme_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -21,7 +21,7 @@ class _SettingsTabState extends State<SettingsTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
@@ -54,7 +54,7 @@ class _SettingsTabState extends State<SettingsTab> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
@@ -77,7 +77,7 @@ class _SettingsTabState extends State<SettingsTab> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                    prov.Language == 'ar'
+                    prov.language == 'ar'
                         ? AppLocalizations.of(context)!.arabic
                         : AppLocalizations.of(context)!.english,
                     style: Theme.of(context)
@@ -99,7 +99,7 @@ class _SettingsTabState extends State<SettingsTab> {
         //     : Colors.white,
         context: context,
         builder: (context) {
-          return ShowLanguageBottomSheet();
+          return const ShowLanguageBottomSheet();
         });
   }
 
@@ -107,7 +107,7 @@ class _SettingsTabState extends State<SettingsTab> {
     showModalBottomSheet(
         context: context,
         builder: (context) {
-          return ShowThemeBottomSheet();
+          return const ShowThemeBottomSheet();
         });
   }
 }

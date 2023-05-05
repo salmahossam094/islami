@@ -14,7 +14,6 @@ class HadethProvider extends ChangeNotifier {
           int lastIndexOfFirstLine = hadethContent[i].trim().indexOf('\n');
           String title =
               hadethContent[i].trim().substring(0, lastIndexOfFirstLine);
-          print(title);
           String content =
               hadethContent[i].trim().substring(lastIndexOfFirstLine + 1);
           HadethModel hadethModel = HadethModel(title, content);

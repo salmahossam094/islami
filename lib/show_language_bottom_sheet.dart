@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:islami/my_theme.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ShowThemeBottomSheet extends StatelessWidget {
-  const ShowThemeBottomSheet({Key? key}) : super(key: key);
+class ShowLanguageBottomSheet extends StatelessWidget {
+  const ShowLanguageBottomSheet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
-    return Container(
+    return SizedBox(
         height: MediaQuery.of(context).size.height * .5,
         child: Column(
           children: [
@@ -17,25 +18,33 @@ class ShowThemeBottomSheet extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  pro.changeTheme(ThemeMode.light);
+                  pro.changeLanguage('en');
                   Navigator.pop(context);
                 },
                 child: Row(
                   children: [
                     Text(
-                      'Light',
+                      AppLocalizations.of(context)!.english,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: pro.themeMode == ThemeMode.light
+                          color: pro.themeMode==ThemeMode.light?
+                          pro.language == 'en'
                               ? Theme.of(context).primaryColor
+                              : Colors.black45
+                          : pro.language == 'en'
+                              ? MyThemeData.darkColorIcon
                               : Colors.white,
                           fontWeight: FontWeight.w400,
                           fontSize: 35),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Icon(
                       Icons.done,
-                      color: pro.themeMode == ThemeMode.light
+                      color: pro.themeMode==ThemeMode.light?
+                      pro.language == 'en'
                           ? Theme.of(context).primaryColor
+                          : Colors.black45
+                          : pro.language == 'en'
+                          ? MyThemeData.darkColorIcon
                           : Colors.white,
                       size: 25,
                     )
@@ -47,26 +56,34 @@ class ShowThemeBottomSheet extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  pro.changeTheme(ThemeMode.dark);
+                  pro.changeLanguage('ar');
                   Navigator.pop(context);
                 },
                 child: Row(
                   children: [
                     Text(
-                      'Dark',
+                      AppLocalizations.of(context)!.arabic,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: pro.themeMode == ThemeMode.light
-                              ? Colors.black54
-                              : MyThemeData.darkColorIcon,
+                          color: pro.themeMode==ThemeMode.light?
+                          pro.language == 'ar'
+                              ? Theme.of(context).primaryColor
+                              : Colors.black45
+                              : pro.language == 'ar'
+                              ? MyThemeData.darkColorIcon
+                              : Colors.white,
                           fontWeight: FontWeight.w400,
                           fontSize: 35),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Icon(
                       Icons.done,
-                      color: pro.themeMode == ThemeMode.light
-                          ? Colors.black54
-                          : MyThemeData.darkColorIcon,
+                      color: pro.themeMode==ThemeMode.light?
+                      pro.language == 'ar'
+                          ? Theme.of(context).primaryColor
+                          : Colors.black45
+                          : pro.language == 'ar'
+                          ? MyThemeData.darkColorIcon
+                          : Colors.white,
                       size: 25,
                     )
                   ],
