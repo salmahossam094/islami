@@ -44,7 +44,7 @@ class _SettingsTabState extends State<SettingsTab> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                    Theme.of(context).brightness == Brightness.light
+                    prov.themeMode==ThemeMode.light
                         ? AppLocalizations.of(context)!.light
                         : AppLocalizations.of(context)!.dark,
                     style: Theme.of(context)
@@ -94,7 +94,9 @@ class _SettingsTabState extends State<SettingsTab> {
 
   showLanguageSheet() {
     showModalBottomSheet(
-        backgroundColor: Theme.of(context).brightness==Brightness.light?Colors.white:Colors.white,
+        // backgroundColor: Theme.of(context).brightness == Brightness.light
+        //     ? Colors.white
+        //     : Colors.white,
         context: context,
         builder: (context) {
           return ShowLanguageBottomSheet();
@@ -103,7 +105,6 @@ class _SettingsTabState extends State<SettingsTab> {
 
   showThemeSheet() {
     showModalBottomSheet(
-
         context: context,
         builder: (context) {
           return ShowThemeBottomSheet();
