@@ -17,7 +17,7 @@ class _SebhaTabState extends State<SebhaTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Spacer(
+          const Spacer(
             flex: 3,
           ),
           Image.asset(
@@ -26,11 +26,11 @@ class _SebhaTabState extends State<SebhaTab> {
                 : 'assets/images/sebha_dark.png',
             scale: 1.2,
           ),
-          Spacer(
+          const Spacer(
             flex: 2,
           ),
           Text('عدد التسبيحات', style: Theme.of(context).textTheme.bodySmall),
-          Spacer(
+          const Spacer(
             flex: 3,
           ),
           ElevatedButton(
@@ -41,7 +41,7 @@ class _SebhaTabState extends State<SebhaTab> {
             style: ButtonStyle(
                 backgroundColor:
                     MaterialStatePropertyAll(Theme.of(context).primaryColor),
-                fixedSize: MaterialStatePropertyAll(Size(69, 81)),
+                fixedSize: const MaterialStatePropertyAll(Size(69, 81)),
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)))),
             child: Text(
@@ -58,14 +58,14 @@ class _SebhaTabState extends State<SebhaTab> {
                     ? Theme.of(context).primaryColor
                     : MyThemeData.darkColorIcon,
                 borderRadius: BorderRadius.circular(20)),
-            margin: EdgeInsets.all(12),
+            margin: const EdgeInsets.all(12),
             padding: const EdgeInsets.all(8.0),
             child: Text(
               tasbeeh,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
-          Spacer(
+          const Spacer(
             flex: 2,
           )
         ],

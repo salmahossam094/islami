@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:islami/tabs/ahadeth.dart';
 import 'package:islami/tabs/radio.dart';
 import 'package:islami/tabs/sebha.dart';
-
+import 'package:islami/tabs/settings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'tabs/quran.dart';
 
 List<Widget> tabs = [
-  RadioTab(),
+  const RadioTab(),
   SebhaTab(),
   AhadethTab(),
   QuranTab(),
+  SettingsTab(),
 ];
 
 int index = 0;
@@ -44,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              'إسلامي',
+              AppLocalizations.of(context)!.appTitle,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
@@ -59,21 +61,21 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             items: [
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
-                  label: 'الراديو',
+                  label: AppLocalizations.of(context)!.radio,
                   icon: const ImageIcon(
                     AssetImage('assets/images/radio.png'),
                     size: 28,
                   )),
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
-                  label: 'السبحة',
+                  label: AppLocalizations.of(context)!.sebha,
                   icon: const ImageIcon(
                     AssetImage('assets/images/sebha.png'),
                     size: 28,
                   )),
               BottomNavigationBarItem(
                 backgroundColor: Theme.of(context).primaryColor,
-                label: 'أحاديث',
+                label: AppLocalizations.of(context)!.ahadeth,
                 icon: const ImageIcon(
                   AssetImage('assets/images/ahadeth.png'),
                   size: 28,
@@ -81,11 +83,18 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               ),
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
-                  label: 'القرآن',
+                  label: AppLocalizations.of(context)!.quran,
                   icon: const ImageIcon(
                     AssetImage('assets/images/quran.png'),
                     size: 28,
-                  ))
+                  )),
+              BottomNavigationBarItem(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  label: AppLocalizations.of(context)!.settings,
+                  icon: const Icon(
+                    Icons.settings,
+                    size: 28,
+                  )),
             ],
           ),
         ),

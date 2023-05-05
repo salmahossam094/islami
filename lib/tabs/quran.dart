@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/sura_details.dart';
 import 'package:islami/models/sura_details_model.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../my_theme.dart';
 
 class QuranTab extends StatefulWidget {
@@ -283,37 +283,42 @@ class _QuranTabState extends State<QuranTab> {
               columns: [
                 DataColumn(
                     label: Text(
-                  'عدد الآيات',
-                  style: Theme.of(context).textTheme.bodySmall,
+                      AppLocalizations.of(context)!.ayatNumber,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 24),
                 )),
                 DataColumn(
                     label: Text(
-                  'اسم السورة',
-                  style: Theme.of(context).textTheme.bodySmall,
+                      AppLocalizations.of(context)!.suraNames,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 24),
                 )),
               ],
               rows: List<DataRow>.generate(
                   suraName.length,
                   (index) => DataRow(cells: <DataCell>[
-                        DataCell(Text(
-                          '${ayatNumber[index]}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall!
-                              .copyWith(fontWeight: FontWeight.bold),
-                        )),
-                        DataCell(InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, SuraDetails.routeName,
-                                arguments:
-                                    SuraDetailsArgs(suraName[index], index));
-                          },
+                        DataCell(Center(
                           child: Text(
-                            suraName[index],
+                            '${ayatNumber[index]}',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall!
-                                .copyWith(fontWeight: FontWeight.bold),
+                                .copyWith(fontWeight: FontWeight.bold,),
+
+                          ),
+                        )),
+                        DataCell(Center(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, SuraDetails.routeName,
+                                  arguments:
+                                      SuraDetailsArgs(suraName[index], index));
+                            },
+                            child: Text(
+                              suraName[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                            ),
                           ),
                         )),
                       ])),

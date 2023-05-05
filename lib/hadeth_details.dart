@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/models/hadeth_model.dart';
 
@@ -22,8 +22,8 @@ class _HadethDetailsState extends State<HadethDetails> {
       decoration: BoxDecoration(
           image: DecorationImage(
               image: Theme.of(context).brightness == Brightness.light
-                  ? AssetImage('assets/images/background.png')
-                  : AssetImage('assets/images/bg_dark.png'),
+                  ? const AssetImage('assets/images/background.png')
+                  : const AssetImage('assets/images/bg_dark.png'),
               fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
@@ -45,7 +45,7 @@ class _HadethDetailsState extends State<HadethDetails> {
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     color: Theme.of(context).brightness == Brightness.light
-                        ? Color.fromRGBO(255, 255, 255, 1)
+                        ? const Color.fromRGBO(255, 255, 255, 1)
                         : MyThemeData.darkColor,
                     borderRadius: BorderRadius.circular(15),
                   ),
