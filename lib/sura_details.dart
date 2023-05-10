@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/models/sura_details_model.dart';
 import 'package:islami/providers/sura_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'my_theme.dart';
 
 class SuraDetails extends StatelessWidget {
@@ -28,12 +28,13 @@ class SuraDetails extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               title: Text(
-                'إسلامي',
+               AppLocalizations.of(context)!.appTitle,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             body: SizedBox(
-              height: MediaQuery.of(context).size.height - 100,
+
+              height: MediaQuery.of(context).size.height-200,
               width: double.infinity,
               child: SingleChildScrollView(
                 child: Column(
@@ -47,7 +48,7 @@ class SuraDetails extends StatelessWidget {
                       child: Container(
                         // width: 300,
                         width: MediaQuery.of(context).size.width - 40,
-                        height: MediaQuery.of(context).size.height - 80,
+                        height: MediaQuery.of(context).size.height - 70,
                         // height: double.infinity,
                         alignment: Alignment.bottomCenter,
                         decoration: BoxDecoration(
@@ -55,7 +56,8 @@ class SuraDetails extends StatelessWidget {
                               Theme.of(context).brightness == Brightness.light
                                   ? const Color.fromRGBO(255, 255, 255, 50)
                                   : MyThemeData.darkColor,
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(20),
+
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,7 +91,7 @@ class SuraDetails extends StatelessWidget {
                                                           .brightness ==
                                                       Brightness.light
                                                   ? Colors.black
-                                                  : MyThemeData.darkColorIcon)),
+                                                  : Colors.white)),
                                   const SizedBox(
                                     width: 1,
                                   ),
@@ -117,20 +119,44 @@ class SuraDetails extends StatelessWidget {
                                         return Row(
                                           children: [
                                             Expanded(
-                                              child: Text(
-                                                '(${index + 1}) ${prov.verses[index]}',
-                                                style: GoogleFonts.amiri(
-                                                    color: Theme.of(context)
-                                                                .brightness ==
-                                                            Brightness.light
-                                                        ? Colors.black
-                                                        : MyThemeData
-                                                            .darkColorIcon,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
+                                                child: RichText(
+                                                    textDirection:
+                                                        TextDirection.rtl,
+                                                    textAlign: TextAlign.center,
+                                                    text: TextSpan(children: [
+                                                      TextSpan(
+                                                        text:
+                                                            ' ${prov.verses[index].trim()}',
+                                                        style: GoogleFonts.amiri(
+                                                            color: Theme.of(context)
+                                                                        .brightness ==
+                                                                    Brightness
+                                                                        .light
+                                                                ? Colors.black
+                                                                : Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 25),
+                                                      ),
+                                                      TextSpan(
+                                                        text:
+                                                            ' \u06dd${index + 1}',
+                                                        style: GoogleFonts.amiri(
+                                                            color: Theme.of(context)
+                                                                        .brightness ==
+                                                                    Brightness
+                                                                        .light
+                                                                ? Theme.of(
+                                                                        context)
+                                                                    .primaryColor
+                                                                : Color(
+                                                                    0xFFB7935F),
+                                                            fontSize: 25,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                      )
+                                                    ]))),
                                           ],
                                         );
                                       },

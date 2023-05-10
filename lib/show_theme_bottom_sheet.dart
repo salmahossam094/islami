@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/my_theme.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShowThemeBottomSheet extends StatelessWidget {
   const ShowThemeBottomSheet({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class ShowThemeBottomSheet extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      'Light',
+                      AppLocalizations.of(context)!.light ,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: pro.themeMode == ThemeMode.light
                               ? Theme.of(context).primaryColor
@@ -53,7 +54,7 @@ class ShowThemeBottomSheet extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      'Dark',
+                      AppLocalizations.of(context)!.dark,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: pro.themeMode == ThemeMode.light
                               ? Colors.black54

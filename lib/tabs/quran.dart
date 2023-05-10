@@ -4,6 +4,7 @@ import 'package:islami/models/sura_details_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../my_theme.dart';
 
+
 class QuranTab extends StatefulWidget {
   @override
   State<QuranTab> createState() => _QuranTabState();
