@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyThemeData {
@@ -14,18 +15,18 @@ class MyThemeData {
         bodyLarge: GoogleFonts.elMessiri(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontSize: 30,
+          fontSize: 30.sp,
         ),
         // ignore: prefer_const_constructors
         bodyMedium: GoogleFonts.jomhuria(
           color: Colors.white,
           fontWeight: FontWeight.w900,
-          fontSize: 25,
+          fontSize: 25.sp,
         ),
         bodySmall: GoogleFonts.elMessiri(
           color: Colors.black,
           fontWeight: FontWeight.normal,
-          fontSize: 25,
+          fontSize: 25.sp,
         ),
       ),
       appBarTheme: const AppBarTheme(
@@ -36,10 +37,10 @@ class MyThemeData {
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: lightColor,
         selectedItemColor: Colors.black,
-        selectedLabelStyle:  GoogleFonts.elMessiri(color: Colors.black, fontSize: 18,fontWeight: FontWeight.w600),
+        selectedLabelStyle:  GoogleFonts.elMessiri(color: Colors.black, fontSize: 18.sp,fontWeight: FontWeight.w600),
         unselectedItemColor: Colors.white,
         unselectedLabelStyle:
-            GoogleFonts.elMessiri(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w600),
+            GoogleFonts.elMessiri(color: Colors.white,fontSize: 18.sp,fontWeight: FontWeight.w600),
       ));
   static ThemeData darkTheme = ThemeData(
     primaryColor: darkColor,
@@ -54,25 +55,25 @@ class MyThemeData {
         backgroundColor: darkColor,
         selectedItemColor: darkColorIcon,
         selectedLabelStyle:
-            const TextStyle(color: Color(0xFFFACC1D), fontSize: 18,fontWeight: FontWeight.w600),
+             TextStyle(color: const Color(0xFFFACC1D), fontSize: 18.sp,fontWeight: FontWeight.w600),
         unselectedItemColor: Colors.white,
-        unselectedLabelStyle: const TextStyle( fontSize: 18,fontWeight: FontWeight.w600),
+        unselectedLabelStyle:  TextStyle( fontSize: 18.sp,fontWeight: FontWeight.w600),
       ),
       textTheme: TextTheme(
         bodyLarge: GoogleFonts.elMessiri(
           color: Colors.white,
           fontWeight: FontWeight.bold,
-          fontSize: 30,
+          fontSize: 30.sp,
         ),
         bodyMedium: GoogleFonts.jomhuria(
           color: Colors.white,
           fontWeight: FontWeight.w900,
-          fontSize: 25,
+          fontSize: 25.sp,
         ),
         bodySmall: GoogleFonts.elMessiri(
           color: Colors.white,
           fontWeight: FontWeight.normal,
-          fontSize: 25,
+          fontSize: 25.sp,
         ),
       ));
 }

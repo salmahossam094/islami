@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:islami/show_language_bottom_sheet.dart';
 import 'package:islami/show_theme_bottom_sheet.dart';
@@ -23,13 +24,13 @@ class _SettingsTabState extends State<SettingsTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 20.h,
           ),
           Text(
             AppLocalizations.of(context)!.themeing,
             style:
-                Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20),
+                Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20.sp),
           ),
           InkWell(
             onTap: () {
@@ -42,7 +43,7 @@ class _SettingsTabState extends State<SettingsTab> {
                       color: Theme.of(context).brightness == Brightness.light
                           ? Theme.of(context).primaryColor
                           : Colors.white),
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(20.r)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -52,17 +53,17 @@ class _SettingsTabState extends State<SettingsTab> {
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
-                        ?.copyWith(fontSize: 20)),
+                        ?.copyWith(fontSize: 20.sp)),
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 20.h,
           ),
           Text(
             AppLocalizations.of(context)!.language,
             style:
-                Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20),
+                Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 20.sp),
           ),
           InkWell(
             onTap: () {
@@ -75,7 +76,7 @@ class _SettingsTabState extends State<SettingsTab> {
                       color: Theme.of(context).brightness == Brightness.light
                           ? Theme.of(context).primaryColor
                           : Colors.white),
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(20.r)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -85,7 +86,7 @@ class _SettingsTabState extends State<SettingsTab> {
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
-                        ?.copyWith(fontSize: 20)),
+                        ?.copyWith(fontSize: 20.sp)),
               ),
             ),
           )

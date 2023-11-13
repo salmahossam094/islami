@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/models/hadeth_model.dart';
 
@@ -42,20 +43,20 @@ class _HadethDetailsState extends State<HadethDetails> {
             children: [
               Center(
                 child: Container(
-                  width: 300,
-                  height: 450,
+                  width: 300.w,
+                  height: 450.h,
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     color: Theme.of(context).brightness == Brightness.light
                         ? const Color.fromRGBO(255, 255, 255, 1)
                         : MyThemeData.darkColor,
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(15.r),
                   ),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(height: 15),
+                         SizedBox(height: 15.h),
                         Container(
                           margin: const EdgeInsets.only(
                             left: 25,
@@ -64,7 +65,7 @@ class _HadethDetailsState extends State<HadethDetails> {
                           decoration: BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
-                                    width: 0.5,
+                                    width: 0.5.w,
                                     color: Theme.of(context).brightness ==
                                             Brightness.light
                                         ? Theme.of(context).primaryColor
@@ -83,8 +84,8 @@ class _HadethDetailsState extends State<HadethDetails> {
                                                   Brightness.light
                                               ? Colors.black
                                               : MyThemeData.darkColorIcon)),
-                              const SizedBox(
-                                width: 2,
+                               SizedBox(
+                                width: 2.w,
                               ),
                             ],
                           ),

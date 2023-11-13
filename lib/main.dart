@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/hadeth_details.dart';
 import 'package:islami/my_theme.dart';
 import 'package:islami/providers/my_provider.dart';
@@ -25,28 +26,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
-    return MaterialApp(
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('ar'),
-      ],
-      locale: Locale(provider.language),
-      themeMode: provider.themeMode,
-      theme: MyThemeData.lightTheme,
-      darkTheme: MyThemeData.darkTheme,
-      debugShowCheckedModeBanner: false,
-      initialRoute: HomeScreen.routeName,
-      routes: {
-        HomeScreen.routeName: (context) => const HomeScreen(),
-        SuraDetails.routeName: (context) => const SuraDetails(),
-        HadethDetails.routeName: (context) => const HadethDetails()
-      },
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) =>  MaterialApp(
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'), // English
+          Locale('ar'),
+        ],
+        locale: Locale(provider.language),
+        themeMode: provider.themeMode,
+        theme: MyThemeData.lightTheme,
+        darkTheme: MyThemeData.darkTheme,
+        debugShowCheckedModeBanner: false,
+        initialRoute: HomeScreen.routeName,
+        routes: {
+          HomeScreen.routeName: (context) => const HomeScreen(),
+          SuraDetails.routeName: (context) => const SuraDetails(),
+          HadethDetails.routeName: (context) => const HadethDetails()
+        },
+      ),
     );
   }
 }

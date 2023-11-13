@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/my_theme.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,7 @@ class ShowLanguageBottomSheet extends StatelessWidget {
                                   ? MyThemeData.darkColorIcon
                                   : Colors.white,
                           fontWeight: FontWeight.w400,
-                          fontSize: 35),
+                          fontSize: 35.sp),
                     ),
                     const Spacer(),
                     Icon(
@@ -72,7 +73,7 @@ class ShowLanguageBottomSheet extends StatelessWidget {
                                   ? MyThemeData.darkColorIcon
                                   : Colors.white,
                           fontWeight: FontWeight.w400,
-                          fontSize: 35),
+                          fontSize: 35.sp),
                     ),
                     const Spacer(),
                     Icon(

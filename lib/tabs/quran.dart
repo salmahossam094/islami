@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:islami/sura_details.dart';
-import 'package:islami/models/sura_details_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../my_theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/models/sura_details_model.dart';
+import 'package:islami/sura_details.dart';
 
+import '../my_theme.dart';
 
 class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
@@ -259,25 +260,25 @@ class _QuranTabState extends State<QuranTab> {
             DataTable(
               border: TableBorder(
                 horizontalInside: BorderSide(
-                  width: 1,
+                  width: 1.w,
                   color: Theme.of(context).brightness == Brightness.light
                       ? Theme.of(context).primaryColor
                       : MyThemeData.darkColorIcon,
                 ),
                 verticalInside: BorderSide(
-                  width: 3,
+                  width: 3.w,
                   color: Theme.of(context).brightness == Brightness.light
                       ? Theme.of(context).primaryColor
                       : MyThemeData.darkColorIcon,
                 ),
                 top: BorderSide(
-                  width: 3,
+                  width: 3.w,
                   color: Theme.of(context).brightness == Brightness.light
                       ? Theme.of(context).primaryColor
                       : MyThemeData.darkColorIcon,
                 ),
                 bottom: BorderSide(
-                  width: 3,
+                  width: 3.w,
                   color: Theme.of(context).brightness == Brightness.light
                       ? Theme.of(context).primaryColor
                       : MyThemeData.darkColorIcon,
@@ -286,13 +287,19 @@ class _QuranTabState extends State<QuranTab> {
               columns: [
                 DataColumn(
                     label: Text(
-                      AppLocalizations.of(context)!.ayatNumber,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 24),
+                  AppLocalizations.of(context)!.ayatNumber,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(fontSize: 24.sp),
                 )),
                 DataColumn(
                     label: Text(
-                      AppLocalizations.of(context)!.suraNames,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 24),
+                  AppLocalizations.of(context)!.suraNames,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(fontSize: 24.sp),
                 )),
               ],
               rows: List<DataRow>.generate(
@@ -301,17 +308,17 @@ class _QuranTabState extends State<QuranTab> {
                         DataCell(Center(
                           child: Text(
                             '${ayatNumber[index]}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall!
-                                .copyWith(fontWeight: FontWeight.bold,),
-
+                            style:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                           ),
                         )),
                         DataCell(Center(
                           child: InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, SuraDetails.routeName,
+                              Navigator.pushNamed(
+                                  context, SuraDetails.routeName,
                                   arguments:
                                       SuraDetailsArgs(suraName[index], index));
                             },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/models/sura_details_model.dart';
 import 'package:islami/providers/sura_provider.dart';
@@ -43,8 +44,8 @@ class SuraDetails extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 40,
+                     SizedBox(
+                      height: 40.h,
                     ),
                     Center(
                       child: Container(
@@ -58,12 +59,12 @@ class SuraDetails extends StatelessWidget {
                               Theme.of(context).brightness == Brightness.light
                                   ? const Color.fromRGBO(255, 255, 255, 50)
                                   : MyThemeData.darkColor,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(20.r),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const SizedBox(height: 15),
+                             SizedBox(height: 15.h),
                             Container(
                               margin: const EdgeInsets.only(
                                 left: 25,
@@ -72,7 +73,7 @@ class SuraDetails extends StatelessWidget {
                               decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: 0.5,
+                                        width: 0.5.w,
                                         color: Theme.of(context).brightness ==
                                                 Brightness.light
                                             ? Theme.of(context).primaryColor
@@ -93,8 +94,8 @@ class SuraDetails extends StatelessWidget {
                                                       Brightness.light
                                                   ? Colors.black
                                                   : Colors.white)),
-                                  const SizedBox(
-                                    width: 1,
+                                   SizedBox(
+                                    width: 1.w,
                                   ),
                                   IconButton(
                                     onPressed: () {},
@@ -137,7 +138,7 @@ class SuraDetails extends StatelessWidget {
                                                                 : Colors.white,
                                                             fontWeight:
                                                                 FontWeight.w500,
-                                                            fontSize: 25),
+                                                            fontSize: 25.sp),
                                                       ),
                                                       TextSpan(
                                                         text:
@@ -152,7 +153,7 @@ class SuraDetails extends StatelessWidget {
                                                                     .primaryColor
                                                                 : const Color(
                                                                     0xFFB7935F),
-                                                            fontSize: 25,
+                                                            fontSize: 25.sp,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w500),

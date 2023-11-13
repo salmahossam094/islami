@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/tabs/Api/RadioResponse.dart';
 import 'package:islami/tabs/Api/api_Manager.dart';
 
@@ -40,75 +41,77 @@ class RadioTab extends StatelessWidget {
           );
         } else if (snapshot.connectionState == ConnectionState.done) {
           List<Radios> rad = snapshot.data?.radios ?? [];
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/radio_pag.png'),
-              const SizedBox(
-                height: 30,
-              ),
-              Text(
-                'إذاعة القرآن الكريم',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              CarouselSlider(
-                  options: CarouselOptions(),
-                  items: rad.map((e) {
-                    return Column(
-                      children: [
-                        Text(
-                          e.name ?? '',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.light
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.white),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: IconButton(
-                                  onPressed: () {
-                                    audioPlayer!.play(UrlSource(e.url ?? ''));
-                                  },
-                                  icon: Icon(
-                                    Icons.play_arrow,
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/radio_pag.png'),
+                 SizedBox(
+                  height: 30.h,
+                ),
+                Text(
+                  'إذاعة القرآن الكريم',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                 SizedBox(
+                  height: 60.h,
+                ),
+                CarouselSlider(
+                    options: CarouselOptions(),
+                    items: rad.map((e) {
+                      return Column(
+                        children: [
+                          Text(
+                            e.name ?? '',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
                                     color: Theme.of(context).brightness ==
                                             Brightness.light
                                         ? Theme.of(context).primaryColor
-                                        : Colors.white,
-                                    size: 50,
-                                  )),
-                            ),
-                            Expanded(
+                                        : Colors.white),
+                          ),
+                           SizedBox(
+                            height: 20.h,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
                                 child: IconButton(
                                     onPressed: () {
-                                      audioPlayer!.stop();
+                                      audioPlayer!.play(UrlSource(e.url ?? ''));
                                     },
                                     icon: Icon(
-                                      Icons.stop,
+                                      Icons.play_arrow,
                                       color: Theme.of(context).brightness ==
                                               Brightness.light
                                           ? Theme.of(context).primaryColor
                                           : Colors.white,
                                       size: 50,
-                                    )))
-                          ],
-                        )
-                      ],
-                    );
-                  }).toList())
-            ],
+                                    )),
+                              ),
+                              Expanded(
+                                  child: IconButton(
+                                      onPressed: () {
+                                        audioPlayer!.stop();
+                                      },
+                                      icon: Icon(
+                                        Icons.stop,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.light
+                                            ? Theme.of(context).primaryColor
+                                            : Colors.white,
+                                        size: 50,
+                                      )))
+                            ],
+                          )
+                        ],
+                      );
+                    }).toList())
+              ],
+            ),
           );
         }
         return const Text('error');

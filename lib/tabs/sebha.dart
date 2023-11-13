@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../my_theme.dart';
 
@@ -19,7 +20,7 @@ class _SebhaTabState extends State<SebhaTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Spacer(
+           const Spacer(
             flex: 3,
           ),
           Image.asset(
@@ -45,7 +46,7 @@ class _SebhaTabState extends State<SebhaTab> {
                     MaterialStatePropertyAll(Theme.of(context).primaryColor),
                 fixedSize: const MaterialStatePropertyAll(Size(69, 81)),
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)))),
+                    borderRadius: BorderRadius.circular(15.r)))),
             child: Text(
               '$totalCounter',
               style: Theme.of(context)
@@ -59,7 +60,7 @@ class _SebhaTabState extends State<SebhaTab> {
                 color: Theme.of(context).brightness == Brightness.light
                     ? Theme.of(context).primaryColor
                     : MyThemeData.darkColorIcon,
-                borderRadius: BorderRadius.circular(20)),
+                borderRadius: BorderRadius.circular(20.r)),
             margin: const EdgeInsets.all(12),
             padding: const EdgeInsets.all(8.0),
             child: Text(
