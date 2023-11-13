@@ -4,7 +4,7 @@ You can read "[Quran ,Hadith]" and do prayer beads "Tasbih" and listen to "Radio
 
 ## Getting Started
 
-I used many features:<br>
+I used many features:'<br>'
 ● shared preference: To keep the the theme and language that you chose whenever you open the app.<br>
 ● Provider.<br>
 ● A thorough assortment of Quranic Surahs.📖<br>
