@@ -8,6 +8,8 @@ import 'my_theme.dart';
 class HadethDetails extends StatefulWidget {
   static const String routeName = 'hadeth';
 
+  const HadethDetails({super.key});
+
   @override
   State<HadethDetails> createState() => _HadethDetailsState();
 }

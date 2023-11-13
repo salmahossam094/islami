@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/models/sura_details_model.dart';
 import 'package:islami/providers/sura_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'my_theme.dart';
 
 class SuraDetails extends StatelessWidget {
   static const String routeName = 'sura-details';
+
+  const SuraDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +31,12 @@ class SuraDetails extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               title: Text(
-               AppLocalizations.of(context)!.appTitle,
+                AppLocalizations.of(context)!.appTitle,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             body: SizedBox(
-
-              height: MediaQuery.of(context).size.height-200,
+              height: MediaQuery.of(context).size.height - 200,
               width: double.infinity,
               child: SingleChildScrollView(
                 child: Column(
@@ -57,7 +59,6 @@ class SuraDetails extends StatelessWidget {
                                   ? const Color.fromRGBO(255, 255, 255, 50)
                                   : MyThemeData.darkColor,
                           borderRadius: BorderRadius.circular(20),
-
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -149,7 +150,7 @@ class SuraDetails extends StatelessWidget {
                                                                 ? Theme.of(
                                                                         context)
                                                                     .primaryColor
-                                                                : Color(
+                                                                : const Color(
                                                                     0xFFB7935F),
                                                             fontSize: 25,
                                                             fontWeight:

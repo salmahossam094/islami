@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../my_theme.dart';
 
 class SebhaTab extends StatefulWidget {
+  const SebhaTab({super.key});
+
   @override
   State<SebhaTab> createState() => _SebhaTabState();
 }

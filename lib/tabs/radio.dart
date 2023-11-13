@@ -1,75 +1,118 @@
+import 'package:audioplayers/audioplayers.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:islami/my_theme.dart';
+import 'package:islami/tabs/Api/RadioResponse.dart';
+import 'package:islami/tabs/Api/api_Manager.dart';
 
 class RadioTab extends StatelessWidget {
-  const RadioTab({Key? key}) : super(key: key);
+  RadioTab({Key? key}) : super(key: key);
+
+  final AudioPlayer? audioPlayer = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image.asset('assets/images/radio_pag.png'),
-        const SizedBox(
-          height: 30,
-        ),
-        Text(
-          'إذاعة القرآن الكريم',
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    FontAwesomeIcons.backwardStep,
-                    color: Theme.of(context).brightness == Brightness.light
-                        ? Theme.of(context).primaryColor
-                        : MyThemeData.darkColorIcon,
-                    size: 30,
-                  ),
-                )),
-            const SizedBox(
-              width: 28,
+    return FutureBuilder(
+      future: ApiManager.playRadio(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+              child: CircularProgressIndicator(
+            color: Theme.of(context).brightness == Brightness.light
+                ? Theme.of(context).primaryColor
+                : Colors.white,
+          ));
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Column(
+              children: [
+                Text(snapshot.error.toString(),
+                    style: Theme.of(context).textTheme.bodyLarge),
+                ElevatedButton(
+                    onPressed: () {
+                      ApiManager.playRadio();
+                    },
+                    child: Text(
+                      'Try Again',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+              ],
             ),
-            IconButton(
-                onPressed: () {},
-                icon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    FontAwesomeIcons.play,
-                    color: Theme.of(context).brightness == Brightness.light
-                        ? Theme.of(context).primaryColor
-                        : MyThemeData.darkColorIcon,
-                    size: 30,
-                  ),
-                )),
-            const SizedBox(
-              width: 28,
-            ),
-            IconButton(
-                onPressed: () {},
-                icon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    FontAwesomeIcons.forwardStep,
-                    color: Theme.of(context).brightness == Brightness.light
-                        ? Theme.of(context).primaryColor
-                        : MyThemeData.darkColorIcon,
-                    size: 30,
-                  ),
-                ))
-          ],
-        )
-      ],
+          );
+        } else if (snapshot.connectionState == ConnectionState.done) {
+          List<Radios> rad = snapshot.data?.radios ?? [];
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/radio_pag.png'),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'إذاعة القرآن الكريم',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              CarouselSlider(
+                  options: CarouselOptions(),
+                  items: rad.map((e) {
+                    return Column(
+                      children: [
+                        Text(
+                          e.name ?? '',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.white),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: IconButton(
+                                  onPressed: () {
+                                    audioPlayer!.play(UrlSource(e.url ?? ''));
+                                  },
+                                  icon: Icon(
+                                    Icons.play_arrow,
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.white,
+                                    size: 50,
+                                  )),
+                            ),
+                            Expanded(
+                                child: IconButton(
+                                    onPressed: () {
+                                      audioPlayer!.stop();
+                                    },
+                                    icon: Icon(
+                                      Icons.stop,
+                                      color: Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.white,
+                                      size: 50,
+                                    )))
+                          ],
+                        )
+                      ],
+                    );
+                  }).toList())
+            ],
+          );
+        }
+        return const Text('error');
+      },
     );
   }
 }

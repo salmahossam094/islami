@@ -7,17 +7,19 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'tabs/quran.dart';
 
 List<Widget> tabs = [
-  const RadioTab(),
-  SebhaTab(),
-  AhadethTab(),
-  QuranTab(),
-  SettingsTab(),
+   RadioTab(),
+  const SebhaTab(),
+  const AhadethTab(),
+  const QuranTab(),
+  const SettingsTab(),
 ];
 
 int index = 0;
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
+
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

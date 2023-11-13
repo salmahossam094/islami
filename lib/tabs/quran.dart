@@ -6,6 +6,8 @@ import '../my_theme.dart';
 
 
 class QuranTab extends StatefulWidget {
+  const QuranTab({super.key});
+
   @override
   State<QuranTab> createState() => _QuranTabState();
 }

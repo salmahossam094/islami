@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import '../my_theme.dart';
 
 class AhadethTab extends StatelessWidget {
+  const AhadethTab({super.key});
+
 
   @override
   Widget build(BuildContext context) {

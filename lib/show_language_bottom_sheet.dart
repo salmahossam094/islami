@@ -26,26 +26,26 @@ class ShowLanguageBottomSheet extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.english,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: pro.themeMode==ThemeMode.light?
-                          pro.language == 'en'
-                              ? Theme.of(context).primaryColor
-                              : Colors.black45
-                          : pro.language == 'en'
-                              ? MyThemeData.darkColorIcon
-                              : Colors.white,
+                          color: pro.themeMode == ThemeMode.light
+                              ? pro.language == 'en'
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.black45
+                              : pro.language == 'en'
+                                  ? MyThemeData.darkColorIcon
+                                  : Colors.white,
                           fontWeight: FontWeight.w400,
                           fontSize: 35),
                     ),
                     const Spacer(),
                     Icon(
                       Icons.done,
-                      color: pro.themeMode==ThemeMode.light?
-                      pro.language == 'en'
-                          ? Theme.of(context).primaryColor
-                          : Colors.black45
+                      color: pro.themeMode == ThemeMode.light
+                          ? pro.language == 'en'
+                              ? Theme.of(context).primaryColor
+                              : Colors.black45
                           : pro.language == 'en'
-                          ? MyThemeData.darkColorIcon
-                          : Colors.white,
+                              ? MyThemeData.darkColorIcon
+                              : Colors.white,
                       size: 25,
                     )
                   ],
@@ -64,26 +64,26 @@ class ShowLanguageBottomSheet extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.arabic,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: pro.themeMode==ThemeMode.light?
-                          pro.language == 'ar'
-                              ? Theme.of(context).primaryColor
-                              : Colors.black45
+                          color: pro.themeMode == ThemeMode.light
+                              ? pro.language == 'ar'
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.black45
                               : pro.language == 'ar'
-                              ? MyThemeData.darkColorIcon
-                              : Colors.white,
+                                  ? MyThemeData.darkColorIcon
+                                  : Colors.white,
                           fontWeight: FontWeight.w400,
                           fontSize: 35),
                     ),
                     const Spacer(),
                     Icon(
                       Icons.done,
-                      color: pro.themeMode==ThemeMode.light?
-                      pro.language == 'ar'
-                          ? Theme.of(context).primaryColor
-                          : Colors.black45
+                      color: pro.themeMode == ThemeMode.light
+                          ? pro.language == 'ar'
+                              ? Theme.of(context).primaryColor
+                              : Colors.black45
                           : pro.language == 'ar'
-                          ? MyThemeData.darkColorIcon
-                          : Colors.white,
+                              ? MyThemeData.darkColorIcon
+                              : Colors.white,
                       size: 25,
                     )
                   ],
