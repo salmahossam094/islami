@@ -1,16 +1,17 @@
 # islami
 
-A new Flutter project.
+You can read "[Quran ,Hadith]" and do prayer beads "Tasbih" and listen to "Radio Station"
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I used many features:
+● shared preference: To keep the the theme and language that you chose whenever you open the app.
+● Provider.
+● A thorough assortment of Quranic Surahs.📖
+● comprehensive compilation of Hadiths.📜
+● Tasbeh : Prayer beads.📿
+● API: Used "https://mp3quran.net/ar/radios" to listen to the radio.📻 
+● Dark/Light theme.🌓
+● Localization : AR/EN. 🈂
+![msg1350577729-3561](https://github.com/salmahossam094/islami/assets/90824795/bfce88a5-b01e-42da-882c-f9cf4955cd5d)
+Radio Tab
